@@ -17,7 +17,7 @@ if ($idUser != null && $status != null) {
         $sql = "SELECT * FROM lecturer where id=$idUser";
         $query = mysqli_query($conn, $sql);
     } else if($status == 3){
-        $sql = "SELECT * FROM student where id=$idUser";
+        $sql = "SELECT * FROM mahasiswa where id=$idUser";
         $query = mysqli_query($conn, $sql);
     }
 }
