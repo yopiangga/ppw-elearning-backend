@@ -19,9 +19,13 @@ if ($idUser != null) {
         AND a.classId = c.id";
 
         $query = mysqli_query($conn, $sql);
+
+        $sqlCollect = "SELECT * FROM collectassignment WHERE idStudent=$idUser;";
+        $queryCollect = mysqli_query($conn, $sqlCollect);
 }
 
 $length = mysqli_num_rows($query);
+$lengthCollect = mysqli_num_rows($queryCollect);
 
 for($i=0; $i<$length; $i++){
     $ass = mysqli_fetch_array($query);
@@ -37,6 +41,18 @@ for($i=0; $i<$length; $i++){
     );
 }
 
+for($i=0; $i<$lengthCollect; $i++){
+    $coll = mysqli_fetch_array($queryCollect);
+    $collect[$i] = array(
+        'id' => $coll['id'],
+        'idAssignment' => $coll['idAssignment'],
+        'createAt' => $coll['createAt'],
+        'updateAt' => $coll['updateAt'],
+        'idStudent' => $coll['idStudent'],
+        'rate' => $coll['rate'],
+    );
+}
+
 if($length > 0){
     $msg = "Read Assignment Success!";
     
@@ -48,7 +64,8 @@ if($length > 0){
 $response = array(
     'status' => "OK",
     'msg' => $msg,
-    'data' => $item
+    'data' => $item,
+    'collect' => $collect
 );
 
 echo json_encode($response);
