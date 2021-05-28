@@ -41,7 +41,6 @@ for($i=0; $i<$length; $i++){
     );
 }
 
-$collect[0] = 0;
 for($i=0; $i<$lengthCollect; $i++){
     $coll = mysqli_fetch_array($queryCollect);
     $collect[$i] = array(
