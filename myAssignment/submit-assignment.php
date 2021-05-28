@@ -4,7 +4,7 @@
 
 include("./../config/connection.php");
 include("./../config/cors.php");
-
+include("./../config/baseurl.php");
 
 $idUser = $_POST["idUser"];
 $idAss = $_POST["idAss"];
@@ -18,7 +18,7 @@ $dueDate = $_POST["dueDate"];
 $createAt = time();
 $updateAt = 0;
 
-$folder = "./../file/collectAssignment/";
+$folder = $baseurl . "file/collectAssignment/";
 $imgN = $_FILES["image"]["name"];
 $imgName = $createAt . '_' . $imgN;
 $imgTmp = $_FILES["image"]["tmp_name"];
