@@ -33,6 +33,8 @@ if ($idUser != null) {
     $sqlSelesai = "SELECT * from collectassignment WHERE idStudent=$idUser";
     $querySelesai = mysqli_query($conn, $sqlSelesai);
     $tugasSelesai = mysqli_num_rows($querySelesai);
+
+    $NFinish = $jumlahTugas - $tugasSelesai;
 }
 
 if ($idUser) {
@@ -45,7 +47,7 @@ $item = array(
     'class' => $jumlahClass,
     'assignment' => $jumlahTugas,
     'done' => $tugasSelesai,
-    'nFinish' => 0
+    'nFinish' => $NFinish
 );
 
 $response = array(
