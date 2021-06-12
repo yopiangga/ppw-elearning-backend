@@ -18,7 +18,7 @@ $dueDate = $_POST["dueDate"];
 $createAt = time();
 $updateAt = 0;
 
-$folder = $baseurl . "file/collectAssignment/";
+$folder = "./../../file/collectAssignment/";
 $imgN = $_FILES["image"]["name"];
 $imgName = $createAt . '_' . $imgN;
 $imgTmp = $_FILES["image"]["tmp_name"];

@@ -12,7 +12,7 @@ $idUser = $data->idUser;
 
 if ($idUser != null) {
 
-    $sql = "SELECT * FROM enrollClass WHERE idStudent=$idUser;";
+    $sql = "SELECT * FROM enrollclass WHERE idStudent=$idUser;";
     $query = mysqli_query($conn, $sql);
 
     $length = mysqli_num_rows($query);

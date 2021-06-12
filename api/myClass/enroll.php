@@ -22,7 +22,7 @@ if ($code != null && $idUser != null) {
     if ($cek > 0) {
         $class = mysqli_fetch_assoc($query);
         $idClass = $class['id'];
-        $enroll = "INSERT INTO enrollClass (idClass, idStudent) VALUE ('$idClass', '$idUser');";
+        $enroll = "INSERT INTO enrollclass (idClass, idStudent) VALUE ('$idClass', '$idUser');";
         $queryEnroll = mysqli_query($conn, $enroll);
     } else {
         $msg = "Class Not Avalilable!";

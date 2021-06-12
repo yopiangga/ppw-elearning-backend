@@ -14,7 +14,6 @@ $query = 0;
 
 $email = $data->user->email;
 $telp = $data->user->telp;
-$password = $data->user->password1;
 $fullName = $data->user->fullName;
 $nickName = $data->user->nickName;
 $university = $data->user->university;
@@ -25,7 +24,14 @@ $gender = $data->user->gender;
 $zipCode = $data->user->zipCode;
 $address = $data->user->address;
 
-if ($idUser != null && $status != null) {
+$password1 = $data->user->password1;
+$password2 = $data->user->password2;
+
+if($password1 == $password2){
+    $password = $password1;
+}
+
+if ($idUser != null && $status != null && $password1 != '') {
     
     if($status == 2){
         $sql = "UPDATE lecturer SET
@@ -39,8 +45,20 @@ if ($idUser != null && $status != null) {
         WHERE id = '$idUser'";
     }
 
-    $query = mysqli_query($conn, $sql);
+} else if($idUser != null && $status != null && $password1 == ''){
+    if($status == 2){
+        $sql = "UPDATE lecturer SET
+        telp='$telp', fullName='$fullName', nickName='$nickName', university='$university', 
+        fields='$fields', placeBirth='$placeBirth', dateBirth='$dateBirth', gender='$gender', zipCode='$zipCode', address='$address'
+        WHERE id = '$idUser'";
+    } else if($status == 3){
+        $sql = "UPDATE mahasiswa SET
+        telp='$telp', fullName='$fullName', nickName='$nickName', university='$university', 
+        fields='$fields', placeBirth='$placeBirth', dateBirth='$dateBirth', gender='$gender', zipCode='$zipCode', address='$address'
+        WHERE id = '$idUser'";
+    }
 }
+$query = mysqli_query($conn, $sql);
 
 if($query){
     $msg = "Update Success!";

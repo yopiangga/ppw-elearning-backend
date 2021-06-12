@@ -39,7 +39,7 @@ if ($idUser != null && $idAss != null) {
                 'name' => $item['fullName'],
                 'rate' => $item['rate'],
                 'createAt' => date('d-m-Y', $item['createAt']),
-                // 'file' => $item['path'].$item['name']
+                'file' => $item['name']
             );
         }
     } else {
