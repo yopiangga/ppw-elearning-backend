@@ -13,7 +13,7 @@ $idUser = $data->idUser;
 if ($idUser != null) {
 
         $sql = "SELECT a.id, a.title, a.description, a.minRate, a.maxRate, a.dueTime, a.dueDate, c.name
-        FROM assignment a, class c, enrollClass e
+        FROM assignment a, class c, enrollclass e
         WHERE e.idStudent = $idUser
         AND c.id = e.idClass 
         AND a.classId = c.id
@@ -25,10 +25,13 @@ if ($idUser != null) {
         $i = 0;
         $assignment = [];
         while($item = mysqli_fetch_array($query)){
-            $assignment[$i] = array(
-                'title' => $item['title'],
-                'class' => $item['name'],
-            );
+            if(strtotime($item['dueDate']) > time()){
+                $assignment[$i] = array(
+                    'title' => $item['title'],
+                    'class' => $item['name'],
+                );
+                $i++;
+            }
         }
 }
 

@@ -22,7 +22,7 @@ if ($idUser != null) {
 
     // Jumlah Tugas
     $sqlJumlahTugas = "SELECT a.id, a.title, a.description, a.minRate, a.maxRate, a.dueTime, a.dueDate, c.name
-    FROM assignment a, class c, enrollClass e
+    FROM assignment a, class c, enrollclass e
     WHERE e.idStudent = $idUser
     AND c.id = e.idClass 
     AND a.classId = c.id";
